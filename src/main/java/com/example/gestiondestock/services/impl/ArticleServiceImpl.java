@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ArticleServiceImpl implements ArticleService {
 
-    private final ArticleRepository articleRepository;
+    private ArticleRepository articleRepository;
 
     @Autowired
     public ArticleServiceImpl(ArticleRepository articleRepository){

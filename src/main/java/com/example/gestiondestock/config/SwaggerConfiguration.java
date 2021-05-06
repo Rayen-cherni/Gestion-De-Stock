@@ -29,7 +29,7 @@ public class SwaggerConfiguration {
                 .groupName("REST API V1")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example.gestiondestock"))
-                .paths(PathSelectors.ant(APP_ROOT + "/**")) //lenna bch ydhaharli les API lkol ( ay wahed yabda bl APP_ROOT)
+                .paths(PathSelectors.any()) //lenna bch ydhaharli les API lkol ( ay wahed yabda bl APP_ROOT)
                 .build();
     }
 

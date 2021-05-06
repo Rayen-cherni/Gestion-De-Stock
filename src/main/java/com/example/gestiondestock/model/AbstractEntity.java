@@ -23,12 +23,22 @@ public class AbstractEntity implements Serializable {
     private Integer id;
 
     @CreatedDate //represente la date de creation de l'entité
-    @Column(name = "creationDate" )
+    @Column(name = "creationDate")
     private Instant creationDate;
+
     //Instant equi Date
     @LastModifiedDate
-    @Column(name="lastModifiedDate" )
+    @Column(name="lastModifiedDate")
     //@JsonIgnore //whene i dont need to see this attribute in my documetation i use @jsonignore
     private Instant lastModifiedDate;
+
+    @PrePersist
+    void prePersist(){
+        creationDate = Instant.now();
+    }
+    @PreUpdate
+    void preUpdate(){
+        lastModifiedDate = Instant.now();
+    }
 
 }

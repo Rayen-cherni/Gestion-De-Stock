@@ -14,7 +14,6 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "category")
-
 public class Category extends AbstractEntity {
 
     @Column(name = "code")
