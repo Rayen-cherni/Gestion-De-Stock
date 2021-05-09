@@ -8,7 +8,7 @@ public interface ArticleService {
 
     ArticleDto save(ArticleDto dto);
     ArticleDto findById(Integer id);
-    ArticleDto findByCodeArticle(String codeArticle);
+    ArticleDto findByCode(String codeArticle);
     List<ArticleDto> findAll();
     void delete(Integer id);
 

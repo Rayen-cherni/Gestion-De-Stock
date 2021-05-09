@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import static com.example.gestiondestock.utils.constants.APP_ROOT;
 
 @Configuration
-@EnableSwagger2  //cad que on va activer swagger
+@EnableSwagger2 //cad que on va activer swagger
 public class SwaggerConfiguration {
 
     @Bean

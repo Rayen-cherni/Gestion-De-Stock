@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.example.gestiondestock.exception.EntityNotFoundException;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,7 +25,7 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleRepository articleRepository;
 
     @Autowired
-    public ArticleServiceImpl(ArticleRepository articleRepository){
+    public ArticleServiceImpl(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
     }
 
@@ -42,32 +43,32 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ArticleDto findById(Integer id) {
-        if(id == null){
+        if (id == null) {
             System.out.println("Article ID is null");
             return null;
         }
-        Optional<Article> article = articleRepository.findById(id);
-        ArticleDto dto = ArticleDto.fromEntity(article.get());
 
-        return Optional.of(dto).orElseThrow(()->
+        return articleRepository.findById(id).map(ArticleDto::fromEntity).orElseThrow(() ->
                 new EntityNotFoundException(
                         "Aucun article avec l'ID = " + id + " n' ete trouve dans la BDD",
-                        ErrorCodes.ARTICLE_NOT_FOUND));
+                        ErrorCodes.ARTICLE_NOT_FOUND)
+        );
     }
 
     @Override
-    public ArticleDto findByCodeArticle(String codeArticle) {
-        if(!StringUtils.hasLength(codeArticle)){
+    public ArticleDto findByCode(String codeArticle) {
+        if (!StringUtils.hasLength(codeArticle)) {
             System.out.println("le CODE Article n'existe plus");
             return null;
         }
-        Optional<Article> article = articleRepository.findArticleByCodeArticle(codeArticle);
 
-        return Optional.of(ArticleDto.fromEntity(article.get())).orElseThrow(()->
-                new EntityNotFoundException(
-                        "Aucun article avec le CODE = " + codeArticle + " n' ete trouve dans la BDD",
-                        ErrorCodes.ARTICLE_NOT_FOUND)
-        );
+        return articleRepository.findArticleByCodeArticle(codeArticle)
+                .map(ArticleDto::fromEntity)
+                .orElseThrow(() ->
+                        new EntityNotFoundException(
+                                "Aucun article avec le CODE = " + codeArticle + " n' ete trouve dans la BDD",
+                                ErrorCodes.ARTICLE_NOT_FOUND)
+                );
     }
 
     @Override
@@ -82,6 +83,6 @@ public class ArticleServiceImpl implements ArticleService {
             log.error("Article ID is null");
             return;
         }
-         articleRepository.deleteById(id);
+        articleRepository.deleteById(id);
     }
 }

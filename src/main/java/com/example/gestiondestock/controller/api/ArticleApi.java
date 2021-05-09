@@ -35,13 +35,13 @@ public interface ArticleApi {
     ArticleDto findById(@PathVariable("idArticle") Integer id);
 
 
-    @GetMapping(value = APP_ROOT+"/articles/{codeArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT+"/articles/filter/{codeArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Rechecher d'un artcile",notes = "Permet de rechercher un article par son CODE",response = ArticleDto.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "L'objet article a ete trouvé dans le CODE"),
             @ApiResponse(code = 404, message = "Aucun article n'existe dans la DB avec l'CODE fourni ")
     })
-    ArticleDto findByCodeArticle(@PathVariable("codeArticle") String codeArticle);
+    ArticleDto findByCode(@PathVariable("codeArticle") String codeArticle);
 
     @GetMapping(value = APP_ROOT+"/articles/all",produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Renvoi tous les articles",notes = "Permet de retouner tous les articles qui extes dans la DB",

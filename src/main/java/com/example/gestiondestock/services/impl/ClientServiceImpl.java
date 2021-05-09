@@ -44,8 +44,6 @@ public class ClientServiceImpl implements ClientService {
             System.out.println("Client ID is null");
             return null;
         }
-        Optional<Client> client = clientRepository.findById(id);
-        ClientDto dto = ClientDto.fromEntity(client.get());
 
         return clientRepository.findById(id)
                 .map(ClientDto::fromEntity)
