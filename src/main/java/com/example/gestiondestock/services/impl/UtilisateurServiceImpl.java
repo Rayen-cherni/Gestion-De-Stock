@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class UtilisateurServiceImpl implements UtilisateurService {
 
 
-    private final UtilisateurRepository utilisateurRepository;
+    private UtilisateurRepository utilisateurRepository;
 
     @Autowired
     public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository) {
@@ -67,5 +67,18 @@ public class UtilisateurServiceImpl implements UtilisateurService {
             return;
         }
         utilisateurRepository.deleteById(id);
+    }
+
+    @Override
+    public UtilisateurDto findByEmail(String email) {
+        if (email == null) {
+            System.out.println("Utilisateur email is null");
+            return null;
+        }
+        return utilisateurRepository.findByEmail(email)
+                .map(UtilisateurDto::fromEntity)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Aucun utilisateur avec l'email = " + email + " n' ete trouve dans la BDD",
+                        ErrorCodes.UTILISATEUR_NOT_FOUND));
     }
 }

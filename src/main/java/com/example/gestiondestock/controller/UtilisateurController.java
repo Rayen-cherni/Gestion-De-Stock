@@ -37,4 +37,6 @@ public class UtilisateurController implements UtilisateurApi {
     public void delete(Integer id) {
         utilisateurService.delete(id);
     }
+
+
 }

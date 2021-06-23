@@ -31,7 +31,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ArticleDto save(ArticleDto dto) {
-        //TODO IMPLE THE EXCEPTION
+
         List<String> errors = ArticleValidator.validate(dto);
         if (!errors.isEmpty()) {
             log.error("Article is not valid {}", dto);

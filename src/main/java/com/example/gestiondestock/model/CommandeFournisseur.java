@@ -13,11 +13,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "commandefournisseur") //c'est optionelle car si on le precise pas hebernate va prendre le nom de classe comme nom de table par default dans la DB
-
 public class CommandeFournisseur extends AbstractEntity{
 
     @Column(name = "code")
     private String code;
+
     @Column(name = "datecommadne")
     private Instant dateCommande;
 

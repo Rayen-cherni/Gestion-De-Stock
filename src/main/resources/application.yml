@@ -8,11 +8,16 @@ spring:
     jpa:
         database: MYSQL
         show-sql: false
-
+        properties:
+            hibernate:
+                session_factory:
+                    interceptor: com.example.gestiondestock.interceptor.Interceptor
 # Hibernate DDL Auto (create, create-drop, update)
         hibernate:
             ddl-auto: update
             dialect: org.hibernate.dialect.MySQL5Dialect
+
+
 server:
     port: 8080
     #error:

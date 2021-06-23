@@ -44,7 +44,7 @@ public interface CategoryApi {
     })
     CategoryDto findByCode(@PathVariable("codeCategory") String codeCategory);
 
-    @GetMapping(value = APP_ROOT + "/categories/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT + "/categories/all",produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Renvoi tous les categories", notes = "Permet de retouner tous les categories qui extes dans la DB",
             responseContainer = "List<CategoryDto >")
     @ApiResponses(value = {

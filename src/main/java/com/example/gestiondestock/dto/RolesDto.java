@@ -2,6 +2,7 @@ package com.example.gestiondestock.dto;
 
 import com.example.gestiondestock.model.Roles;
 import com.example.gestiondestock.model.Utilisateur;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class RolesDto {
     private Integer id;
     private String roleName;
 
+    @JsonIgnore
     private UtilisateurDto utilisateur;
 
     public static RolesDto fromEntity(Roles roles) {

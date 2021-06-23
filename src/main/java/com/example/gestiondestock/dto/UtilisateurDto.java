@@ -4,6 +4,7 @@ import com.example.gestiondestock.model.Adresse;
 import com.example.gestiondestock.model.Entreprise;
 import com.example.gestiondestock.model.Roles;
 import com.example.gestiondestock.model.Utilisateur;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -25,11 +26,12 @@ public class UtilisateurDto {
 
     private Instant dateDeNaissance;
 
+    @JsonIgnore
     private String motDePasse;
 
     private String photo;
 
-     private AdresseDto adresse;
+    private AdresseDto adresse;
 
     private EntrepriseDto entreprise;
 

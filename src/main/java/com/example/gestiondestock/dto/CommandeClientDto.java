@@ -16,7 +16,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class CommandeClientDto {
+public class  CommandeClientDto {
 
     private Integer id;
 
@@ -58,5 +58,9 @@ public class CommandeClientDto {
         commandeClient.setEtatCommande(dto.getEtatCommande());
         commandeClient.setIdEntreprise(dto.getIdEntreprise());
         return commandeClient;
+    }
+
+    public boolean isCommandeLivree(){
+        return EtatCommande.LIVREE.equals((this.etatCommande));
     }
 }

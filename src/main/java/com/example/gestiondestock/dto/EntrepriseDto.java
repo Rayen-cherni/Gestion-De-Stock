@@ -35,6 +35,7 @@ public class EntrepriseDto {
     private String siteWeb;
 
     private List<UtilisateurDto> utilisateurs;
+
     public static EntrepriseDto fromEntity(Entreprise entreprise) {
         if (entreprise == null) {
             return null;
